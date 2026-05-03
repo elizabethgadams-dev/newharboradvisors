@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Harbor Advisors — Financial Guidance for Life's Second Chapter</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C9XDNXLFBN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-C9XDNXLFBN');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -789,7 +797,7 @@
       <em>I'm here for the moments<br>when you shouldn't<br>have to do it alone.</em>
     </h1>
     <p class="hero-subhead">
-      I work with women who are figuring out their finances after a major life change — widowed, divorced, or starting over. Hourly. No products. No assets to manage.
+      I work with women who are suddenly responsible for a financial picture they didn't set up alone — after losing a spouse, or after a divorce. Hourly. No products. Nothing to manage.
     </p>
     <a href="#contact" class="hero-btn">Start a Conversation</a>
   </div>
@@ -830,17 +838,17 @@
     <p class="section-eyebrow">About</p>
     <h2 class="section-headline">I've been where<br><em>you are now.</em></h2>
     <p>
-      When my husband died in 2024, I had to figure out my financial future on my own — with two kids, properties across two states, and no one I could call who really understood the situation.
+      My husband died in January 2024. I had a four-year-old and an eight-month-old, properties in two states, a life insurance payout on the way, and a financial picture that was suddenly, completely mine to figure out.
     </p>
     <p>
-      I wanted someone I could pay by the hour for honest help. Not someone who needed to manage my assets to make it worth their time. I couldn't find that person.
+      I wanted someone I could pay by the hour for honest help. Someone who understood this specific situation — not just the numbers, but the weight of making big decisions while you're still in shock. I couldn't find her.
     </p>
     <div class="about-divider"></div>
     <p>
-      So I decided to become her. I'm currently completing my financial planning credentials and building New Harbor Advisors for women in the same position I was in — recently widowed or divorced, suddenly responsible for a financial picture they didn't set up alone, and not sure what to do next.
+      So I decided to become her. I'm currently completing my AFC credential and working with a small number of clients while I do. My background is in technology consulting and I've been investing in real estate since 2014. I've spent most of my adult life working toward financial independence. None of that is typical for this space — and that's the point.
     </p>
     <p>
-      My background is in technology consulting. I've also been investing in rental real estate since 2014 and have been working toward financial independence for most of my adult life. I'm not a traditional financial advisor — and that's the point.
+      I also work with women navigating divorce, who face many of the same decisions with a different kind of pressure.
     </p>
   </div>
 </section>
@@ -911,7 +919,8 @@
     </div>
 
     <div class="services-note fade-in">
-      <p>New Harbor Advisors is currently in formation. I'm completing my credentials and will begin taking clients soon. If you'd like to be among the first, get in touch now.</p>
+      <p>Sessions are $150–175/hour. Some people need one. Some need a few. There's no package to buy and nothing to sign.</p>
+      <p style="margin-top: 1rem;">I'm currently completing my AFC credential and working with a small number of clients while I do. If you'd like to be among the first, get in touch — I'd like to hear your situation.</p>
     </div>
   </div>
 </section>
@@ -930,16 +939,7 @@
       </div>
       <div class="contact-detail-text">
         <strong>New York City</strong>
-        Available to meet virtually from anywhere
-      </div>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-detail-icon">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <div class="contact-detail-text">
-        <strong>Email</strong>
-        <a href="mailto:newharboradvisors@gmail.com" style="color: var(--sage); text-decoration: none;">newharboradvisors@gmail.com</a>
+        Available virtually from anywhere
       </div>
     </div>
   </div>
@@ -1004,11 +1004,53 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // Track "Start a Conversation" button clicks
+  document.querySelectorAll('a[href="#contact"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      gtag('event', 'cta_click', {
+        event_category: 'engagement',
+        event_label: btn.textContent.trim()
+      });
+    });
+  });
+
+  // Track situation dropdown selection
+  var situationSelect = document.getElementById('situation');
+  if (situationSelect) {
+    situationSelect.addEventListener('change', function() {
+      gtag('event', 'situation_selected', {
+        event_category: 'form',
+        event_label: this.value
+      });
+    });
+  }
+
+  // Track scroll depth (25%, 50%, 75%, 100%)
+  var scrollDepthFired = {};
+  window.addEventListener('scroll', function() {
+    var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    [25, 50, 75, 100].forEach(function(depth) {
+      if (scrollPct >= depth && !scrollDepthFired[depth]) {
+        scrollDepthFired[depth] = true;
+        gtag('event', 'scroll_depth', {
+          event_category: 'engagement',
+          event_label: depth + '%'
+        });
+      }
+    });
+  });
+
+  // Track form submission
   document.querySelector('form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('.form-submit');
     btn.textContent = 'Sending...';
     btn.disabled = true;
+
+    gtag('event', 'form_submit', {
+      event_category: 'conversion',
+      event_label: document.getElementById('situation').value || 'no situation selected'
+    });
 
     const data = new FormData(this);
     const response = await fetch(this.action, {
@@ -1022,7 +1064,7 @@
       btn.style.background = '#3D6B3D';
       this.reset();
     } else {
-      btn.textContent = 'Something went wrong — please email directly';
+      btn.textContent = 'Something went wrong — please try again shortly';
       btn.style.background = '#8A8478';
       btn.disabled = false;
     }
