@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Harbor Advisors — Financial Guidance for Life's Second Chapter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest: #2D4A2D;
+    --forest-mid: #3D6B3D;
+    --sage: #6B8F6B;
+    --sage-light: #A8C5A8;
+    --sage-pale: #E8F0E8;
+    --cream: #F7F4EE;
+    --warm-white: #FDFCF9;
+    --stone: #8A8478;
+    --ink: #1C2018;
+    --ink-light: #4A4A42;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--warm-white);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(253, 252, 249, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(107, 143, 107, 0.15);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--forest);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--forest); }
+
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-white) !important;
+    background: var(--forest);
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--forest-mid) !important; color: var(--warm-white) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    background: var(--forest);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 5rem 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 70%;
+    border-radius: 50%;
+    background: rgba(107, 143, 107, 0.12);
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: rgba(168, 197, 168, 0.08);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-light);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 4.5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--warm-white);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  .hero-subhead {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(232, 240, 232, 0.75);
+    line-height: 1.8;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--forest);
+    background: var(--sage-pale);
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    width: fit-content;
+    transition: background 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-btn:hover { background: var(--sage-light); }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 5rem;
+    position: relative;
+  }
+
+  .hero-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .hero-stat {
+    border-left: 2px solid var(--sage);
+    padding-left: 1.5rem;
+  }
+
+  .hero-stat-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--forest);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-stat-label {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-quote {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 2px;
+    border: 1px solid rgba(107, 143, 107, 0.2);
+  }
+
+  .hero-quote p {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-quote cite {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-style: normal;
+  }
+
+  /* ABOUT */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+  }
+
+  .about-image {
+    background: var(--sage-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-image-placeholder {
+    width: 280px;
+    height: 380px;
+    background: var(--sage-light);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-image-placeholder svg {
+    opacity: 0.4;
+  }
+
+  .about-image-placeholder p {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    opacity: 0.6;
+  }
+
+  .about-image::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border: 1px solid rgba(107, 143, 107, 0.3);
+    border-radius: 2px;
+    z-index: 1;
+  }
+
+  .about-content {
+    background: var(--warm-white);
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .section-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+  }
+
+  .section-headline {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-headline em {
+    font-style: italic;
+  }
+
+  .about-content p {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+    max-width: 500px;
+  }
+
+  .about-content p strong {
+    font-weight: 500;
+    color: var(--forest);
+  }
+
+  .about-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--sage);
+    margin: 1.5rem 0;
+  }
+
+  /* PHILOSOPHY */
+  .philosophy {
+    background: var(--forest);
+    padding: 6rem 4rem;
+    text-align: center;
+  }
+
+  .philosophy-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .philosophy .section-eyebrow {
+    color: var(--sage-light);
+  }
+
+  .philosophy-headline {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--warm-white);
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+
+  .philosophy p {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(232, 240, 232, 0.75);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .philosophy-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .pillar {
+    text-align: left;
+    padding: 2rem;
+    border: 1px solid rgba(107, 143, 107, 0.25);
+    border-radius: 2px;
+  }
+
+  .pillar-number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--sage-light);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .pillar h3 {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 0.75rem;
+  }
+
+  .pillar p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 7rem 4rem;
+    background: var(--cream);
+  }
+
+  .services-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    margin-bottom: 4rem;
+    max-width: 580px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--warm-white);
+    padding: 2.5rem;
+    border-radius: 2px;
+    border: 1px solid rgba(107, 143, 107, 0.15);
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .service-card:hover {
+    border-color: var(--sage);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--sage-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--forest);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .service-card h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .service-card p {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-price {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 500;
+  }
+
+  .services-note {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    background: var(--sage-pale);
+    border-left: 2px solid var(--sage);
+    border-radius: 0 2px 2px 0;
+    max-width: 600px;
+  }
+
+  .services-note p {
+    font-family: var(--sans);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--forest);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 70vh;
+  }
+
+  .contact-left {
+    background: var(--sage-pale);
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-left .section-headline {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-left p {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-light);
+    line-height: 1.9;
+    margin-bottom: 1rem;
+    max-width: 420px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(107, 143, 107, 0.25);
+  }
+
+  .contact-detail-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--sage-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-icon svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--forest);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .contact-detail-text {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--stone);
+  }
+
+  .contact-detail-text strong {
+    display: block;
+    font-weight: 500;
+    color: var(--forest);
+    font-size: 0.9rem;
+  }
+
+  .contact-right {
+    background: var(--warm-white);
+    padding: 6rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid rgba(107, 143, 107, 0.2);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--sage);
+  }
+
+  .form-group textarea {
+    height: 120px;
+    resize: vertical;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-submit {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-white);
+    background: var(--forest);
+    border: none;
+    border-radius: 2px;
+    padding: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+
+  .form-submit:hover { background: var(--forest-mid); }
+
+  .form-disclaimer {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--stone);
+    line-height: 1.6;
+    margin-top: 1rem;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--sage-pale);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-tagline {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--stone);
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }
+
+  footer p {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    color: var(--stone);
+    font-weight: 300;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 4rem 2rem; }
+    .hero-right { padding: 3rem 2rem; display: none; }
+    .about { grid-template-columns: 1fr; }
+    .about-image { display: none; }
+    .about-content { padding: 4rem 2rem; }
+    .philosophy { padding: 4rem 2rem; }
+    .philosophy-pillars { grid-template-columns: 1fr; }
+    .services { padding: 4rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .contact { grid-template-columns: 1fr; }
+    .contact-left { padding: 4rem 2rem; }
+    .contact-right { padding: 3rem 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">New Harbor Advisors</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta nav-links">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">New Harbor Advisors &nbsp;·&nbsp; New York City</p>
+    <h1 class="hero-headline">
+      You can manage<br>your own money.<br>
+      <em>I'm here for the moments<br>when you shouldn't<br>have to do it alone.</em>
+    </h1>
+    <p class="hero-subhead">
+      I work with women who are figuring out their finances after a major life change — widowed, divorced, or starting over. Hourly. No products. No assets to manage.
+    </p>
+    <a href="#contact" class="hero-btn">Start a Conversation</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-block">
+      <div class="hero-stat">
+        <div class="hero-stat-number">Hourly</div>
+        <div class="hero-stat-label">Pay for the time you need. No retainers, no AUM fees, no ongoing obligation.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">No products</div>
+        <div class="hero-stat-label">I don't sell anything. I don't earn commissions. I have no financial stake in what you decide.</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">Specialized</div>
+        <div class="hero-stat-label">I focus on women at a financial turning point — not general wealth management.</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>"I looked for someone who understood my situation. Someone I could pay by the hour, not hand over my assets to. I couldn't find her, so I decided to become her."</p>
+      <cite>— Founder, New Harbor Advisors</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-image">
+    <div class="about-image-placeholder">
+      <svg width="48" height="48" viewBox="0 0 24 24" stroke="#2D4A2D" fill="none" stroke-width="1">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      <p>Photo coming soon</p>
+    </div>
+  </div>
+  <div class="about-content">
+    <p class="section-eyebrow">About</p>
+    <h2 class="section-headline">I've been where<br><em>you are now.</em></h2>
+    <p>
+      When my husband died in 2024, I had to figure out my financial future on my own — with two kids, properties across two states, and no one I could call who really understood the situation.
+    </p>
+    <p>
+      I wanted someone I could pay by the hour for honest help. Not someone who needed to manage my assets to make it worth their time. I couldn't find that person.
+    </p>
+    <div class="about-divider"></div>
+    <p>
+      So I decided to become her. I'm currently completing my financial planning credentials and building New Harbor Advisors for women in the same position I was in — recently widowed or divorced, suddenly responsible for a financial picture they didn't set up alone, and not sure what to do next.
+    </p>
+    <p>
+      My background is in technology consulting. I've also been investing in rental real estate since 2014 and have been working toward financial independence for most of my adult life. I'm not a traditional financial advisor — and that's the point.
+    </p>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="philosophy-inner">
+    <p class="section-eyebrow">My Philosophy</p>
+    <h2 class="philosophy-headline">"Most people are more capable of managing their own money than the financial industry gives them credit for."</h2>
+    <p>What changes during a major life transition isn't your capability. It's your bandwidth, your confidence, and your access to the right information at the right moment.</p>
+    <p>My job isn't to take over. It's to help you get oriented, make a plan, and feel like you know what you're doing again.</p>
+
+    <div class="philosophy-pillars">
+      <div class="pillar fade-in">
+        <div class="pillar-number">01</div>
+        <h3>Hourly & transparent</h3>
+        <p>No assets under management. No commissions. No products. You pay for my time, and that's it.</p>
+      </div>
+      <div class="pillar fade-in">
+        <div class="pillar-number">02</div>
+        <h3>No ongoing obligation</h3>
+        <p>Some people need one session. Some need a few. You don't have to sign up for anything you don't want.</p>
+      </div>
+      <div class="pillar fade-in">
+        <div class="pillar-number">03</div>
+        <h3>Real estate & FIRE</h3>
+        <p>I've been a real estate investor since 2014 and have spent years working toward financial independence. That's not typical for this space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header fade-in">
+      <p class="section-eyebrow">How I Can Help</p>
+      <h2 class="section-headline">Start where<br><em>you actually are.</em></h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 19V5l3-3 3 3v14"/><path d="M3 19h18"/><path d="M12 19v-7"/></svg>
+        </div>
+        <h3>Financial Organization</h3>
+        <p>A full review of your accounts, bills, cash flow, debts, and documents. We figure out where you actually stand, and what needs attention first.</p>
+        <span class="service-price">One-time engagement</span>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Ongoing Support</h3>
+        <p>Monthly check-ins while you're in transition — bill oversight, expense tracking, and someone to call when something comes up and you're not sure what to do.</p>
+        <span class="service-price">Monthly</span>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Focused Consultations</h3>
+        <p>One or two sessions on a specific question — what to do with a life insurance payout, whether to sell a property, how to think about retirement on a single income.</p>
+        <span class="service-price">Hourly</span>
+      </div>
+    </div>
+
+    <div class="services-note fade-in">
+      <p>New Harbor Advisors is currently in formation. I'm completing my credentials and will begin taking clients soon. If you'd like to be among the first, get in touch now.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <p class="section-eyebrow">Get in Touch</p>
+    <h2 class="section-headline">Let's find your<br><em>new harbor.</em></h2>
+    <p>If you're in the middle of a transition and not sure where to start — or just want to talk through your situation before committing to anything — reach out.</p>
+    <p>No obligation. I'll respond within a couple of days.</p>
+
+    <div class="contact-detail">
+      <div class="contact-detail-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="contact-detail-text">
+        <strong>New York City</strong>
+        Available to meet virtually from anywhere
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" placeholder="Elizabeth">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" placeholder="Adams">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label for="situation">What best describes your situation?</label>
+        <select id="situation">
+          <option value="" disabled selected>Select one</option>
+          <option>Recently widowed</option>
+          <option>Going through or recently divorced</option>
+          <option>Interested in FIRE or financial independence</option>
+          <option>Real estate investor seeking guidance</option>
+          <option>Other life transition</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">What's on your mind?</label>
+        <textarea id="message" placeholder="Tell me a little about where you are and what kind of support you're looking for..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+      <p class="form-disclaimer">Your information is kept strictly confidential and will never be shared or sold. I typically respond within 1–2 business days.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">New Harbor Advisors</div>
+    <div class="footer-tagline">Hourly financial guidance for women in transition &nbsp;·&nbsp; New York City</div>
+  </div>
+  <p>© 2025 New Harbor Advisors. All rights reserved.</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    btn.textContent = 'Message Sent';
+    btn.style.background = '#3D6B3D';
+    btn.disabled = true;
+  });
+</script>
+</body>
+</html>
