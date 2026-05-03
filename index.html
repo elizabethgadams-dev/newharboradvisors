@@ -933,10 +933,19 @@
         Available to meet virtually from anywhere
       </div>
     </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="contact-detail-text">
+        <strong>Email</strong>
+        <a href="mailto:newharboradvisors@gmail.com" style="color: var(--sage); text-decoration: none;">newharboradvisors@gmail.com</a>
+      </div>
+    </div>
   </div>
 
   <div class="contact-right">
-    <form>
+    <form action="https://formspree.io/f/xeenegke" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label for="fname">First Name</label>
@@ -995,12 +1004,28 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  document.querySelector('form').addEventListener('submit', function(e) {
+  document.querySelector('form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('.form-submit');
-    btn.textContent = 'Message Sent';
-    btn.style.background = '#3D6B3D';
+    btn.textContent = 'Sending...';
     btn.disabled = true;
+
+    const data = new FormData(this);
+    const response = await fetch(this.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      btn.textContent = 'Message Sent';
+      btn.style.background = '#3D6B3D';
+      this.reset();
+    } else {
+      btn.textContent = 'Something went wrong — please email directly';
+      btn.style.background = '#8A8478';
+      btn.disabled = false;
+    }
   });
 </script>
 </body>
