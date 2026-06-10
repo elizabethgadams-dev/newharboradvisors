@@ -6,6 +6,10 @@
 <title>Financial Advisor for Widows &amp; Divorce | New York City | New Harbor Advisors</title>
 <meta name="description" content="Fee-only financial guidance for women navigating widowhood or divorce in New York City. Hourly sessions, no minimums, no products. I've been where you are.">
 <link rel="canonical" href="https://newharboradvisors.com/">
+<link rel="icon" type="image/svg+xml" href="assets/logos/mark/new-harbor-advisors-mark-forest.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#2D4A2D">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -161,12 +165,41 @@
   }
 
   .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: var(--forest);
-    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-mark {
+    display: none;
+  }
+
+  .nav-logo-text {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0.35em;
+  }
+
+  .nav-logo-name {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    color: var(--forest);
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  .nav-logo-sub {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    color: var(--forest);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-transform: none;
+    margin-top: 0;
   }
 
   .nav-links {
@@ -880,7 +913,14 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">New Harbor Advisors</a>
+  <a href="#" class="nav-logo" aria-label="New Harbor Advisors — home">
+    <img src="assets/logos/mark/new-harbor-advisors-mark-transparent-dark.svg"
+         alt="" width="34" height="34" class="nav-logo-mark" />
+    <span class="nav-logo-text">
+      <span class="nav-logo-name">New Harbor</span>
+      <span class="nav-logo-sub">Advisors</span>
+    </span>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -1148,11 +1188,6 @@
     btn.textContent = 'Sending...';
     btn.disabled = true;
 
-    gtag('event', 'form_submit', {
-      event_category: 'conversion',
-      event_label: document.getElementById('situation').value || 'no situation selected'
-    });
-
     const data = new FormData(this);
     const response = await fetch(this.action, {
       method: 'POST',
@@ -1161,6 +1196,10 @@
     });
 
     if (response.ok) {
+      gtag('event', 'form_submit', {
+        event_category: 'conversion',
+        event_label: document.getElementById('situation').value || 'no situation selected'
+      });
       btn.textContent = 'Message Sent';
       btn.style.background = '#3D6B3D';
       this.reset();
