@@ -6,10 +6,6 @@
 <title>Financial Advisor for Widows &amp; Divorce | New York City | New Harbor Advisors</title>
 <meta name="description" content="Fee-only financial guidance for women navigating widowhood or divorce in New York City. Hourly sessions, no minimums, no products. I've been where you are.">
 <link rel="canonical" href="https://newharboradvisors.com/">
-<link rel="icon" type="image/svg+xml" href="assets/logos/mark/new-harbor-advisors-mark-forest.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-<meta name="theme-color" content="#2D4A2D">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -53,6 +49,7 @@
         "Fee-only financial coaching",
         "FIRE — financial independence"
       ],
+      "founder": { "@id": "https://newharboradvisors.com/#founder" },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Financial Guidance Services",
@@ -83,6 +80,27 @@
           }
         ]
       }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://newharboradvisors.com/#founder",
+      "name": "Elizabeth",
+      "jobTitle": "Financial Advisor",
+      "worksFor": { "@id": "https://newharboradvisors.com/#business" },
+      "url": "https://newharboradvisors.com",
+      "knowsAbout": [
+        "Widowhood financial planning",
+        "Real estate investing",
+        "Financial independence / FIRE",
+        "Divorce financial planning",
+        "Tax planning for widows"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      }
     }
   ]
 }
@@ -104,12 +122,12 @@
   :root {
     --forest: #2D4A2D;
     --forest-mid: #3D6B3D;
-    --sage: #6B8F6B;
+    --sage: #4d6b4d;
     --sage-light: #A8C5A8;
     --sage-pale: #E8F0E8;
     --cream: #F7F4EE;
     --warm-white: #FDFCF9;
-    --stone: #8A8478;
+    --stone: #6b6560;
     --ink: #1C2018;
     --ink-light: #4A4A42;
     --serif: 'Cormorant Garamond', Georgia, serif;
@@ -126,6 +144,22 @@
     font-size: 16px;
   }
 
+  /* SKIP LINK */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--forest);
+    color: var(--warm-white);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    z-index: 999;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
+
   /* NAV */
   nav {
     position: fixed;
@@ -137,47 +171,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 4rem;
-    background: rgba(253, 252, 249, 0.92);
-    backdrop-filter: blur(8px);
+    background: rgba(253, 252, 249, 0.98);
     border-bottom: 1px solid rgba(107, 143, 107, 0.15);
   }
 
   .nav-logo {
-    display: flex;
-    align-items: center;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--forest);
+    letter-spacing: 0.02em;
     text-decoration: none;
-    flex-shrink: 0;
-  }
-
-  .nav-logo-mark {
-    display: none;
-  }
-
-  .nav-logo-text {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 0.35em;
-  }
-
-  .nav-logo-name {
-    font-family: var(--serif);
-    font-size: 1.45rem;
-    font-weight: 300;
-    color: var(--forest);
-    letter-spacing: 0.06em;
-    line-height: 1;
-  }
-
-  .nav-logo-sub {
-    font-family: var(--serif);
-    font-size: 1.45rem;
-    font-weight: 300;
-    color: var(--forest);
-    letter-spacing: 0.06em;
-    line-height: 1;
-    text-transform: none;
-    margin-top: 0;
   }
 
   .nav-links {
@@ -233,49 +237,19 @@
     overflow: hidden;
   }
 
-  .hero-left::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 60%;
-    height: 70%;
-    border-radius: 50%;
-    background: rgba(107, 143, 107, 0.12);
-  }
 
-  .hero-left::after {
-    content: '';
-    position: absolute;
-    bottom: -10%;
-    left: -5%;
-    width: 40%;
-    height: 40%;
-    border-radius: 50%;
-    background: rgba(168, 197, 168, 0.08);
-  }
 
-  .hero-eyebrow {
-    font-family: var(--sans);
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sage-light);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.2s forwards;
-  }
+
 
   .hero-headline {
     font-family: var(--serif);
     font-size: clamp(2.8rem, 4.5vw, 4rem);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.15;
     color: var(--warm-white);
     margin-bottom: 2rem;
     opacity: 0;
-    animation: fadeUp 0.8s ease 0.4s forwards;
+    animation: fadeUp 0.8s ease 0.2s forwards;
   }
 
   .hero-headline em {
@@ -291,8 +265,6 @@
     line-height: 1.8;
     max-width: 380px;
     margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 0.6s forwards;
   }
 
   .hero-btn {
@@ -310,7 +282,7 @@
     width: fit-content;
     transition: background 0.2s;
     opacity: 0;
-    animation: fadeUp 0.8s ease 0.8s forwards;
+    animation: fadeUp 0.8s ease 0.6s forwards;
   }
 
   .hero-btn:hover { background: var(--sage-light); }
@@ -328,8 +300,6 @@
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease 1s forwards;
   }
 
   .hero-stat {
@@ -544,7 +514,7 @@
     font-size: 2.5rem;
     font-weight: 300;
     color: var(--sage-light);
-    opacity: 0.5;
+    opacity: 0.8;
     line-height: 1;
     margin-bottom: 1rem;
   }
@@ -559,6 +529,7 @@
 
   .pillar p {
     font-size: 0.85rem;
+    color: var(--sage-light);
     margin-bottom: 0;
   }
 
@@ -836,7 +807,7 @@
     font-family: var(--sans);
     font-size: 0.75rem;
     font-weight: 300;
-    color: var(--stone);
+    color: var(--sage-light);
     letter-spacing: 0.05em;
     margin-top: 0.25rem;
   }
@@ -844,7 +815,7 @@
   footer p {
     font-family: var(--sans);
     font-size: 0.75rem;
-    color: var(--stone);
+    color: var(--sage-light);
     font-weight: 300;
   }
 
@@ -863,6 +834,17 @@
   .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+    .fade-in { opacity: 1 !important; transform: none !important; }
+    .hero-headline, .hero-subhead, .hero-btn { opacity: 1 !important; }
   }
 
   /* RESPONSIVE */
@@ -889,18 +871,14 @@
 </head>
 <body>
 
+<a href="#home" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo" aria-label="New Harbor Advisors — home">
-    <span class="nav-logo-text">
-      <span class="nav-logo-name">New Harbor</span>
-      <span class="nav-logo-sub">Advisors</span>
-    </span>
-  </a>
+  <a href="#" class="nav-logo">New Harbor Advisors</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="blog/">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta nav-links">Get in Touch</a>
@@ -909,13 +887,12 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
-    <p class="hero-eyebrow">New Harbor Advisors &nbsp;·&nbsp; New York City</p>
     <h1 class="hero-headline">
       You can manage<br>your own money.<br>
       <em>I'm here for the moments<br>when you shouldn't<br>have to do it alone.</em>
     </h1>
     <p class="hero-subhead">
-      I work with women who are suddenly responsible for a financial picture they didn't set up alone — after losing a spouse, or after a divorce.
+      I work with women who are suddenly responsible for a financial picture they didn't set up alone, after losing a spouse or after a divorce.
     </p>
     <a href="#contact" class="hero-btn">Start a Conversation</a>
   </div>
@@ -931,7 +908,7 @@
       </div>
       <div class="hero-stat">
         <div class="hero-stat-number">Specialized</div>
-        <div class="hero-stat-label">I focus on women at a financial turning point — not general wealth management.</div>
+        <div class="hero-stat-label">I focus on women at a financial turning point, not general wealth management.</div>
       </div>
     </div>
     <div class="hero-quote">
@@ -959,11 +936,11 @@
       My husband died in March 2024. I had a four-year-old and an eight-month-old, properties in two states, a life insurance payout on the way, and a financial future that I suddenly had to figure out.
     </p>
     <p>
-      I wanted someone I could pay by the hour for honest help. Someone who understood this specific situation — not just the numbers, but the weight of making big decisions while you're still in shock. I couldn't find her.
+      I wanted someone I could pay by the hour for honest help. Someone who understood this specific situation (not just the numbers, but the weight of making big decisions while you're still in shock). I couldn't find her.
     </p>
     <div class="about-divider"></div>
     <p>
-      So I decided to become her. I've been investing in real estate since 2014. I've spent most of my adult life working toward financial independence. None of that is typical for this space — and that's the point.
+      So I decided to become her. I've been investing in real estate since 2014. I've spent most of my adult life working toward financial independence. None of that is typical for this space. That's the point.
     </p>
     <p>
       I also work with women navigating divorce, who face many of the same decisions with a different kind of pressure.
@@ -1022,7 +999,7 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <h3>Ongoing Support</h3>
-        <p>Monthly check-ins while you're in transition — bill oversight, expense tracking, and someone to call when something comes up and you're not sure what to do.</p>
+        <p>Monthly check-ins while you're in transition: bill oversight, expense tracking, and someone to call when something comes up and you're not sure what to do.</p>
         <span class="service-price">Monthly</span>
       </div>
 
@@ -1031,7 +1008,7 @@
           <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
         </div>
         <h3>Focused Consultations</h3>
-        <p>One or two sessions on a specific question — what to do with a life insurance payout, whether to sell a property, what are the tax implications, how to think about retirement on a single income.</p>
+        <p>One or two sessions on a specific question: what to do with a life insurance payout, whether to sell a property, what the tax implications are, how to think about retirement on a single income.</p>
         <span class="service-price">Hourly</span>
       </div>
     </div>
@@ -1048,7 +1025,7 @@
   <div class="contact-left">
     <p class="section-eyebrow">Get in Touch</p>
     <h2 class="section-headline">Let's find your<br><em>new harbor.</em></h2>
-    <p>If you're in the middle of a transition and not sure where to start — or just want to talk through your situation before committing to anything — please reach out.</p>
+    <p>If you're in the middle of a transition and not sure where to start, or just want to talk through your situation before committing to anything, please reach out.</p>
     <p>No obligation. I'll respond within a couple of days.</p>
 
     <div class="contact-detail">
@@ -1067,31 +1044,31 @@
       <div class="form-row">
         <div class="form-group">
           <label for="fname">First Name</label>
-          <input type="text" id="fname" placeholder="Jane">
+          <input type="text" id="fname" name="fname" required autocomplete="given-name" placeholder="Elizabeth">
         </div>
         <div class="form-group">
           <label for="lname">Last Name</label>
-          <input type="text" id="lname" placeholder="Doe">
+          <input type="text" id="lname" name="lname" autocomplete="family-name" placeholder="Adams">
         </div>
       </div>
       <div class="form-group">
         <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="you@example.com">
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
       </div>
       <div class="form-group">
         <label for="situation">What best describes your situation?</label>
-        <select id="situation">
+        <select id="situation" name="situation">
           <option value="" disabled selected>Select one</option>
-          <option>Recently widowed</option>
-          <option>Going through or recently divorced</option>
-          <option>Interested in FIRE or financial independence</option>
-          <option>Real estate investor seeking guidance</option>
-          <option>Other life transition</option>
+          <option value="Recently widowed">Recently widowed</option>
+          <option value="Going through or recently divorced">Going through or recently divorced</option>
+          <option value="Interested in FIRE or financial independence">Interested in FIRE or financial independence</option>
+          <option value="Real estate investor seeking guidance">Real estate investor seeking guidance</option>
+          <option value="Other life transition">Other life transition</option>
         </select>
       </div>
       <div class="form-group">
         <label for="message">What's on your mind?</label>
-        <textarea id="message" placeholder="Tell me a little about where you are and what kind of support you're looking for..."></textarea>
+        <textarea id="message" name="message" placeholder="Tell me a little about where you are and what kind of support you're looking for..."></textarea>
       </div>
       <button type="submit" class="form-submit">Send Message</button>
       <p class="form-disclaimer">Your information is kept strictly confidential and will never be shared or sold. I typically respond within 1–2 business days.</p>
@@ -1162,8 +1139,14 @@
   document.querySelector('form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = this.querySelector('.form-submit');
+    const form = this;
     btn.textContent = 'Sending...';
     btn.disabled = true;
+
+    gtag('event', 'form_submit', {
+      event_category: 'conversion',
+      event_label: document.getElementById('situation').value || 'no situation selected'
+    });
 
     const data = new FormData(this);
     const response = await fetch(this.action, {
@@ -1173,15 +1156,18 @@
     });
 
     if (response.ok) {
-      gtag('event', 'form_submit', {
-        event_category: 'conversion',
-        event_label: document.getElementById('situation').value || 'no situation selected'
-      });
-      btn.textContent = 'Message Sent';
-      btn.style.background = '#3D6B3D';
-      this.reset();
+      form.innerHTML = `
+        <div style="padding: 3rem 2rem; text-align: center;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2D4A2D" stroke-width="1.5" style="margin-bottom: 1.25rem; display: block; margin-left: auto; margin-right: auto;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <p style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: #2D4A2D; margin-bottom: 0.75rem;">Message received.</p>
+          <p style="font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.9rem; font-weight: 300; color: #4A4A42; line-height: 1.7;">I'll get back to you within a couple of days. In the meantime, take a breath. You've already done something good for yourself by reaching out.</p>
+        </div>
+      `;
     } else {
-      btn.textContent = 'Something went wrong — please try again shortly';
+      btn.textContent = 'Something went wrong. Please try again shortly.';
       btn.style.background = '#8A8478';
       btn.disabled = false;
     }
